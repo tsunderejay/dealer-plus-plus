@@ -115,6 +115,9 @@ namespace dealer__.Utils
             SteamMatchmaking.SetLobbyData(cSteamID, "ready", "false");
             SteamMatchmaking.SetLobbyData(cSteamID, "size", Config.LobbySize.Value.ToString());
 
+            // could this work?
+            // SteamMatchmaking.SetLobbyType(cSteamID, ELobbyType.k_ELobbyTypeFriendsOnly);
+
             Lobby.onLobbyChange?.Invoke();
         }
 
