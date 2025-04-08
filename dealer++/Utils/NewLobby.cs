@@ -28,24 +28,31 @@ namespace dealer__.Utils
         {
             size = Mathf.Clamp(size, 2, 32);
 
-            var lobbyInterface = LobbyInterface.transform;
-            var lobbyInterfaceContainer = lobbyInterface.FindChild("Container");
-            var avatarListTransform = lobbyInterfaceContainer.FindChild("Entries");
-            var avatarList = avatarListTransform.gameObject;
-            var avatarSize = avatarListTransform.childCount - 2;
-            var avatarGameObject = avatarListTransform.FindChild("Entry").gameObject;
-
-            for (int i = avatarSize + 1; i < size; i++)
+            try
             {
-                GameObject newEntry = UnityEngine.Object.Instantiate(avatarGameObject, avatarListTransform);
-                newEntry.name = $"{avatarGameObject.name} ({i - 1})";
+                var lobbyInterface = LobbyInterface.transform;
+                var lobbyInterfaceContainer = lobbyInterface.FindChild("Container");
+                var avatarListTransform = lobbyInterfaceContainer.FindChild("Entries");
+                var avatarList = avatarListTransform.gameObject;
+                var avatarSize = avatarListTransform.childCount - 2;
+                var avatarGameObject = avatarListTransform.FindChild("Entry").gameObject;
+
+                for (int i = avatarSize + 1; i < size; i++)
+                {
+                    GameObject newEntry = UnityEngine.Object.Instantiate(avatarGameObject, avatarListTransform);
+                    newEntry.name = $"{avatarGameObject.name} ({i - 1})";
+                }
+
+                var hostEntry = avatarListTransform.FindChild($"Entry ({avatarSize})");
+                hostEntry.name = $"Entry ({size - 1})";
+                hostEntry.SetAsLastSibling();
+
+                Lobby.onLobbyChange?.Invoke();
             }
-
-            var hostEntry = avatarListTransform.FindChild($"Entry ({avatarSize})");
-            hostEntry.name = $"Entry ({size - 1})";
-            hostEntry.SetAsLastSibling();
-
-            Lobby.onLobbyChange?.Invoke();
+            catch (System.Exception e)
+            {
+                Core.Logger.Error(e);
+            }
         }
 
         public static System.Collections.IEnumerator Initialize()
@@ -88,7 +95,7 @@ namespace dealer__.Utils
                 Lobby.CreateLobby();
                 SteamFriends.ActivateGameOverlayInviteDialog(Lobby.LobbySteamID);
             }
-            else
+            else 
             {
                 if (SteamMatchmaking.GetNumLobbyMembers(Lobby.LobbySteamID) <= Config.LobbySize.Value)
                 {
