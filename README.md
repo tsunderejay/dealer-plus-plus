@@ -10,3 +10,5 @@ this is also compatible with the current multiplayer mod.
 
 # basic config
 "dealer++" = { LobbySize = 20, LobbyPassword = "yo" }
+
+put this in melonpreferences.cfg under userdata
