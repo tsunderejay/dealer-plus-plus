@@ -110,7 +110,6 @@ namespace dealer__.Utils
             Lobby._LobbyID_k__BackingField = cSteamID.m_SteamID;
 
             SteamMatchmaking.SetLobbyData(cSteamID, "owner", SteamUser.GetSteamID().ToString());
-            SteamMatchmaking.SetLobbyData(cSteamID, "password", Config.LobbyPassword.Value);
             SteamMatchmaking.SetLobbyData(cSteamID, "host_loading", "false");
             SteamMatchmaking.SetLobbyData(cSteamID, "ready", "false");
             SteamMatchmaking.SetLobbyData(cSteamID, "size", Config.LobbySize.Value.ToString());

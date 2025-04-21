@@ -31,12 +31,10 @@ public class Core : MelonMod
         harmony.PatchAll();
 
         Config.Category = MelonPreferences.CreateCategory("dealer++", "dealer++");
-        Config.LobbyPassword = Config.Category.CreateEntry("LobbyPassword", "p455w0rd");
         Config.LobbySize = Config.Category.CreateEntry("LobbySize", 20);
 
         Core.Logger.Msg(System.ConsoleColor.Cyan, "dealer++ loaded");
         Core.Logger.Msg(System.ConsoleColor.Cyan, "lobby size: " + Config.LobbySize.Value);
-        Core.Logger.Msg(System.ConsoleColor.Cyan, "lobby password: " + Config.LobbyPassword.Value);
     }
 
     public override void OnSceneWasLoaded(int buildIndex, string sceneName)
