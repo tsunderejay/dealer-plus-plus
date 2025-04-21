@@ -148,8 +148,6 @@ namespace dealer__.Utils
                 HostID = ownerID;
                 Lobby._LobbyID_k__BackingField = lobbyID.m_SteamID;
 
-                Core.Logger.Msg("lobby password matches");
-
                 var lobbySizeStr = SteamMatchmaking.GetLobbyData(lobbyID, "size");
                 var lobbySize = 0;
                 if (string.IsNullOrEmpty(lobbySizeStr))
