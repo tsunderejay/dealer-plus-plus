@@ -1,5 +1,5 @@
 # dealer++
-a dealer simulator multiplayer expansion. what more what less?
+a schedule 1 multiplayer expansion mod. what more what less?
 
 all users need the same config password. tbh you can probably remove this functionality, i literally just removed the stupid bits from the current multiplayer mod.
 this is also compatible with the current multiplayer mod. 
@@ -10,3 +10,5 @@ this is also compatible with the current multiplayer mod.
 
 # basic config
 "dealer++" = { LobbySize = 20, LobbyPassword = "yo" }
+
+put this in melonpreferences.cfg under userdata
