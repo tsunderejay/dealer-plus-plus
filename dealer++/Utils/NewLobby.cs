@@ -146,15 +146,6 @@ namespace dealer__.Utils
             else
             {
                 HostID = ownerID;
-
-                string lobbyPassword = SteamMatchmaking.GetLobbyData(lobbyID, "password");
-
-                if (lobbyPassword != Config.LobbyPassword.Value)
-                {
-                    Core.Logger.Msg("lobby password does not match");
-                    yield break;
-                }
-
                 Lobby._LobbyID_k__BackingField = lobbyID.m_SteamID;
 
                 Core.Logger.Msg("lobby password matches");
